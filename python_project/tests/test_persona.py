@@ -7,7 +7,7 @@ import unittest
 
 # Intentar importar algo que todavía no existe de la caja negra llamada "Personas"
 try:
-    from clases.persona import Persona
+    from src.persona import Persona
 except ImportError:
     verificar_mayoria_edad = None
 

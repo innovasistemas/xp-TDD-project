@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert';
-import { Persona } from '../clases/persona.js' // Importación directa
+import { Persona } from '../src/persona.js' // Importación directa
 
 test('Una persona de 25 años debe ser mayor de edad', () => {
     // Preparar (Arrange)
