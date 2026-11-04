@@ -5,13 +5,13 @@ export class Persona {
         this.salario = salario;
     }
 
-    verificar_mayoria_edad() {
+    verificarMayoriaEdad() {
         return this.edad >= 18;
     }
 
     bonificacionSalario(bonificacion) {
         if (this.salario > 0) {
-            return bonificacion * 100 / self.salario;
+            return bonificacion * 100 / this.salario;
         }
         return 0;
     }
