@@ -1,0 +1,49 @@
+name: Integración Continua - Pruebas TDD (XP)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  # TRABAJO 1: Ejecutar Pruebas de Python (unittest)
+  test-python:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Descargar código del repositorio
+      uses: actions/checkout@v4
+
+    - name: Configurar entorno de Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Ejecutar Tests de Python con unittest
+      run: |
+        cd python_project
+        # Descubre y ejecuta automáticamente todos los archivos que empiecen por test_
+        python -m unittest discover -s tests -p "test_*.py"
+
+  # TRABAJO 2: Ejecutar Pruebas de JavaScript (Node.js test runner)
+  test-javascript:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Descargar código del repositorio
+      uses: actions/checkout@v4
+
+    - name: Configurar entorno de Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20' # Versión estable con soporte nativo de test runner
+
+    - name: Instalar dependencias si existen
+      run: |
+        cd javascript_project
+        if [ -f package.json ]; then npm install; fi
+
+    - name: Ejecutar Tests de JavaScript
+      run: |
+        cd javascript_project
+        # Ejecuta el script de pruebas definido en tu package.json
+        npm test
