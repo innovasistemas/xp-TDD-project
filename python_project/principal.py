@@ -1,5 +1,6 @@
 from clases.persona import Persona
 
+# Objeto per de tipo Persona
 per = Persona()
 
 nom = input("Nombre: ")
