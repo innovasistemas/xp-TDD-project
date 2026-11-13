@@ -29,14 +29,13 @@ jobs:
           # Si es una app JS vainilla, puedes copiar los archivos directamente
           mkdir -p /var/www/html/api
           cp -r ./javascript_project/src* /var/www/html/api/
-        #   cp -r ./frontend/* /var/www/html/
 
       - name: Desplegar Backend (Python)
         run: |
           echo "Configurando entorno de Python en el servidor..."
           # Aquí simulas el despliegue del backend en una ruta interna
           mkdir -p /var/www/html/api
-          cp -r ./python_project/* /var/www/html/api/
+          cp -r ./python_project/src* /var/www/html/api/
           
           # Instalar dependencias de producción de forma local en WSL
           cd /var/www/html/api

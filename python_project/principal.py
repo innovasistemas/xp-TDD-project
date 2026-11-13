@@ -1,4 +1,4 @@
-from clases.persona import Persona
+from src.persona import Persona
 
 # Objeto per de tipo Persona
 per = Persona()
