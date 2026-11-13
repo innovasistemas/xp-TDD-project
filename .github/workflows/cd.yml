@@ -5,8 +5,8 @@ on:
     branches: [ "main" ] # O la rama que usen para producción
 
 jobs:
-  # Supongamos que ya tienes tus trabajos de CI llamados 'test-python' y 'test-js'
-  # Puedes forzar a que este trabajo dependa de ellos usando 'needs'
+  # Supongamos que ya se tienen los trabajos de CI llamados 'test-python' y 'test-js'
+  # Se puede forzar a que este trabajo dependa de ellos usando 'needs'
   build:
     runs-on: self-hosted
     steps:
@@ -27,14 +27,15 @@ jobs:
           echo "Desplegando archivos estáticos de JS/HTML en Apache..."
           # Reemplaza 'dist/' o 'public/' por la carpeta donde esté tu frontend buildeado
           # Si es una app JS vainilla, puedes copiar los archivos directamente
-          cp -r ./frontend/* /var/www/html/
+          cp -r ./javascript_project/* /var/www/html/
+        #   cp -r ./frontend/* /var/www/html/
 
       - name: Desplegar Backend (Python)
         run: |
           echo "Configurando entorno de Python en el servidor..."
           # Aquí simulas el despliegue del backend en una ruta interna
           mkdir -p /var/www/html/api
-          cp -r ./backend/* /var/www/html/api/
+          cp -r ./python_project/* /var/www/html/api/
           
           # Instalar dependencias de producción de forma local en WSL
           cd /var/www/html/api
@@ -46,3 +47,5 @@ jobs:
           # Apache en WSL no siempre requiere reinicio para archivos estáticos, 
           # pero si se configuran scripts CGI o WSGI para Python, puede requerirse:
           # sudo service apache2 restart (requerirá configurar sudoers sin contraseña para este comando)
+
+     
