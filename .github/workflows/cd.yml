@@ -38,11 +38,11 @@ jobs:
           cp -r ./python_project/* /var/www/html/api/python_project/
           
           # Verifica si existe requirements.txt antes de intentar instalar dependencias
-          cd /var/www/html/api
+          cd /var/www/html/api/python_project
           if [ -f "requirements.txt" ]; then
             pip3 install -r requirements.txt --user
           else
-            echo "Sin dependencias externas (no hay requirements.txt). Despliegue listo."
+            echo "No hay archivo requirements.txt. Continuando despliegue..."
           fi
 
       - name: Reiniciar Apache (Opcional)
