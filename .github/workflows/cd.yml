@@ -35,11 +35,15 @@ jobs:
           echo "Configurando entorno de Python en el servidor..."
           # Aquí simulas el despliegue del backend en una ruta interna
           mkdir -p /var/www/html/api/python_project
-          cp -r ./python_project/src* /var/www/html/api/python_project/
+          cp -r ./python_project/* /var/www/html/api/python_project/
           
-          # Instalar dependencias de producción de forma local en WSL
+          # Verifica si existe requirements.txt antes de intentar instalar dependencias
           cd /var/www/html/api
-          pip install -r requirements.txt --user
+          if [ -f "requirements.txt" ]; then
+            pip3 install -r requirements.txt --user
+          else
+            echo "Sin dependencias externas (no hay requirements.txt). Despliegue listo."
+          fi
 
       - name: Reiniciar Apache (Opcional)
         run: |
