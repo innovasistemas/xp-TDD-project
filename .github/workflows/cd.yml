@@ -27,15 +27,15 @@ jobs:
           echo "Desplegando archivos estáticos de JS/HTML en Apache..."
           # Reemplaza 'dist/' o 'public/' por la carpeta donde esté tu frontend buildeado
           # Si es una app JS vainilla, puedes copiar los archivos directamente
-          mkdir -p /var/www/html/api
-          cp -r ./javascript_project/src* /var/www/html/api/
+          mkdir -p /var/www/html/api/javascript_project
+          cp -r ./javascript_project/src* /var/www/html/api/javascript_project/
 
       - name: Desplegar Backend (Python)
         run: |
           echo "Configurando entorno de Python en el servidor..."
           # Aquí simulas el despliegue del backend en una ruta interna
-          mkdir -p /var/www/html/api
-          cp -r ./python_project/src* /var/www/html/api/
+          mkdir -p /var/www/html/api/python_project
+          cp -r ./python_project/src* /var/www/html/api/python_project/
           
           # Instalar dependencias de producción de forma local en WSL
           cd /var/www/html/api
