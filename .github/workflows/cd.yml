@@ -7,6 +7,12 @@ on:
 jobs:
   # Supongamos que ya tienes tus trabajos de CI llamados 'test-python' y 'test-js'
   # Puedes forzar a que este trabajo dependa de ellos usando 'needs'
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Descargar código del repositorio
+        uses: actions/checkout@v4
+
   deploy:
     name: Despliegue en Servidor Local Apache
     runs-on: self-hosted # Indica que use el runner local
